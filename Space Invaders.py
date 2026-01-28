@@ -84,6 +84,17 @@ def yelbullet():
         if bullet.colliderect(redbox):
             bulletsy.remove(bullet)
             redhealth=redhealth-1
+def reset():
+    global redhealth
+    global yelhealth
+    global gameover
+    global yelwins
+    global redwins
+    redhealth=10
+    yelhealth=10
+    gameover=False
+    yelwins=False
+    redwins=False   
 
 while True:
     draw()
@@ -114,6 +125,9 @@ while True:
                 if gameover==False:
                     bullety=pygame.Rect(yelx,yely+35,10,5)
                     bulletsy.append(bullety)
+            if event.key==pygame.K_r:
+                if gameover==True:
+                    reset()
         if event.type==pygame.QUIT:
             pygame.quit()
             sys.exit()
